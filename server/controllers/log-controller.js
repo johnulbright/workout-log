@@ -28,7 +28,13 @@ router.get("/", validateSession, (req, res) => {
 //Get a workout log by id
 router.get("/:id", validateSession, (req, res) => {
   Log.findOne({ where: { owner_id: req.user.id, id: req.params.id } })
-    .then((entries) => res.status(200).json({ entries }))
+    .then((entries) => {
+        if(entries===null){
+            res.status(403).json({message:"You are not allowed to see another user's entry!"})
+        } else{
+            res.status(200).json({ entries })
+        }
+    })
     .catch((err) => res.status(500).json({ error: err }));
 });
 
