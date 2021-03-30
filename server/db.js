@@ -1,9 +1,9 @@
 const Sequelize = require("sequelize");
 
 const sequelize = new Sequelize(
-  "workout-log-server",
+  "workout-log-server2",
   "postgres",
-  "P3Jfamily",
+  "password",
   {
     host: "localhost",
     dialect: "postgres",
